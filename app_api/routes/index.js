@@ -3,8 +3,7 @@ const router = express.Router();
 const { expressjwt: jwt } = require('express-jwt');
 const auth = jwt({
   secret: process.env.JWT_SECRET,
-  algorithms: ['HS256'],
-  userProperty: 'req.auth'
+  algorithms: ['HS256']
 });
 const ctrlLocations = require('../controllers/locations');
 const ctrlReviews = require('../controllers/reviews');
@@ -35,6 +34,7 @@ router
   .get(ctrlReviews.reviewsReadOne)
   .put(auth, ctrlReviews.reviewsUpdateOne)
   .delete(auth, ctrlReviews.reviewsDeleteOne);
+
 
 
 module.exports = router;
